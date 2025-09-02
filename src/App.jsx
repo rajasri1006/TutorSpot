@@ -1,26 +1,32 @@
-import { useState } from 'react';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import TutorForm from './components/TutorForm';
-import SearchForm from './components/SearchForm';
-import TutorList from './components/TutorList';
-import Container from 'react-bootstrap/Container';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import Register from "./components/Register";
+import SignIn from "./components/SignIn";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+
+function Home() {
+  return <h2 style={{ textAlign: "center" }}>Welcome to Home Page</h2>;
+}
+
+function About() {
+  return <h2 style={{ textAlign: "center" }}>About TutorSpot</h2>;
+}
 
 export default function App() {
-  const [filters, setFilters] = useState({ subject: '', location: '' });
-
   return (
-    <>
-      <Header />
-      <Container>
-        <h3>Register as Tutor</h3>
-        <TutorForm />
-        <hr />
-        <h3>Find Tutors</h3>
-        <SearchForm onSearch={setFilters} />
-        <TutorList filters={filters} />
-      </Container>
+    <Router>
+      <Header /> {/* Navbar always visible */}
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/signin" element={<SignIn />} />
+      </Routes>
+
       <Footer />
-    </>
+    </Router>
   );
 }

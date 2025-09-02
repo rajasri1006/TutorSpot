@@ -1,9 +1,11 @@
-import '../styles/Footer.css';
+import React from 'react'
 
 export default function Footer() {
   return (
-    <footer className="footer">
-      <p>© 2025 Tutor Spot. All rights reserved.</p>
+    <footer className="bg-dark text-light py-3">
+      <p className="text-center">
+            Copyright &copy; TutorSpot.com
+      </p>
     </footer>
   );
 }
