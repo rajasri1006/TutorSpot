@@ -1,35 +1,44 @@
 // Display.jsx
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Display() {
+  const navigate = useNavigate();
+  const [subject, setSubject] = useState("");
+  const [location, setLocation] = useState("");
+
+
+  const handleSearch = (e) => {
+    e.preventDefault(); // prevent page reload
+    navigate("/tutorsList", { state: { subject, location } }); // go to Results page
+  };
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50">
-      {/* Heading */}
-      <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">
-        Search Qualified Home Tutors
-      </h1>
+      <h1 className="text-3xl font-bold mb-6">Search Qualified Home Tutors</h1>
 
-      {/* Search Row */}
-      <div className="flex flex-centre w-full max-w-4xl">
-        {/* Subject Input */}
+      <form onSubmit={handleSearch} className="flex w-full max-w-4xl">
         <input
           type="text"
           placeholder="Enter subject"
-          className="flex-1 px-4 py-3 border rounded-l-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          value={subject}
+          onChange={(e) => setSubject(e.target.value)}
+          className="flex-1 px-4 py-3 border rounded-l-xl"
         />
-
-        {/* Location Input */}
         <input
           type="text"
           placeholder="Enter location"
-          className="flex-1 px-4 py-3 border-t border-b border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          value={location}
+          onChange={(e) => setLocation(e.target.value)}
+          className="flex-1 px-4 py-3 border-t border-b"
         />
-
-        {/* Search Button */}
-        <button className="px-6 py-3 bg-success text-white font-medium rounded-r-xl hover:bg-warning transition flex items-center">
+        <button
+          type="submit"
+          className="px-6 py-3 bg-success text-white rounded-r-xl hover:bg-blue-700"
+        >
            Search
         </button>
-      </div>
+      </form>
     </div>
   );
 }
