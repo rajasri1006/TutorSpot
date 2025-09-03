@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Register from "./components/Register";
 import SignIn from "./components/SignIn";
 import Header from "./components/Header";
+import Display from "./components/Display";
 import Footer from "./components/Footer";
 
 function Home() {
@@ -26,6 +27,7 @@ export default function App() {
         <Route path="/signin" element={<SignIn />} />
       </Routes>
 
+      <Display />
       <Footer />
     </Router>
   );

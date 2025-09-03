@@ -6,6 +6,7 @@ export default function RegisterForm() {
     qualification: "",
     location: "",
     subjects: "",
+    Contact: "",
     email: "",
     password: "",
   });
@@ -86,6 +87,20 @@ export default function RegisterForm() {
             type="text" 
             name="subjects" 
             value={formData.subjects}
+            onChange={handleChange}
+            required
+            style={{ width: "100%", padding: "8px", marginTop: "4px" }}
+          />
+        </label>
+
+        <label>
+          Contact
+          <input
+            type="tel" 
+            name="contact" 
+            placeholder="+91 9876543210"
+            pattern="[0-9]{10}" 
+            value={formData.contact}
             onChange={handleChange}
             required
             style={{ width: "100%", padding: "8px", marginTop: "4px" }}
